@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ping-pong-python
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ping-pong-python
+  template:
+    metadata:
+      labels:
+        app: ping-pong-python
+    spec:
+      containers:
+      - name: python-container
+        image: ping-pong-python:latest
+        ports:
+        - containerPort: 3001

@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: hello-world-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: hello-world
+  template:
+    metadata:
+      labels:
+        app: hello-world
+    spec:
+      containers:
+      - name: hello-world
+        image: sarikapt9/hello-world-docker  # Ensure this image exists in the registry
+        imagePullPolicy: Always             # Always pull the latest image
+        ports:
+        - containerPort: 5000
